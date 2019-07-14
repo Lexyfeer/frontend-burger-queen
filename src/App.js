@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
+import { HashRouter, Route } from 'react-router-dom';
 import './App.css';
+
+import NavbarProfile from './components/NavbarProfile';
+import Register from './components/Register';
+import ShowOrders from './components/ShowOrders';
+import MakeOrders from './components/MakeOrders';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <div className="App">
+        <NavbarProfile />
+        <Route exact path="/" component={Register} />
+        <Route path="/ShowOrders" component={ShowOrders} />
+        <Route path="/MakeOrders" component={MakeOrders} />
+      </div>
+    </HashRouter>
   );
 }
 
