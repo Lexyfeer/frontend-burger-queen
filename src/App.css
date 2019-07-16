@@ -71,3 +71,15 @@ nav {
 
   border: solid .2rem red;
 }
+
+/* MEDIA QUERIES */
+/* Extra small devices (phones, 320px and down) */
+/* @media only screen and (max-width: 375px) and (min-width: 321px) {} */
+
+/* @media only screen and (max-width: 425px) and (min-width: 376px) {} */
+
+/* @media only screen and (max-width: 768px) and (min-width: 426px) {} */
+
+/* @media only screen and (max-width: 1024px) and (min-width: 769px) {} */
+
+/* @media only screen and (min-width: 1025px) {} */
