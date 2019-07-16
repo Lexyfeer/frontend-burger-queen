@@ -8,15 +8,15 @@ const Login = (props) => (
             <div className="LoginImage">
                 <div >
             <form className="form">
-                <label for="nya">Nombre y Apellido: *</label>
+                <label htmlFor="nya">Nombre y Apellido: *</label>
                 <br />
                 <input className="form-control" type="text" name="nya" id="nya" placeholder="Nancy Rodriguez" required />
                 <br /><br />
-                <label for="email">Email: *</label>
+                <label htmlFor="email">Email: *</label>
                 <br />
                 <input className="form-control" type="text" name="email" id="email" placeholder="ejemplo@hotmail.com" required />
                 <br /><br />
-                <label for="password">Contraseña:</label>
+                <label htmlFor="password">Contraseña:</label>
                 <br/>
                 <input className="form-control" type="password" name="contraseña" id="contraseña" required />
                 <br /><br />
