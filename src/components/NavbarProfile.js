@@ -18,19 +18,27 @@ export default class NavbarProfile extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-            <Nav.Item>
-                <NavLink className="navMenuLink" exact to="/">
-                  <h6>Iniciar sesión</h6>
-                </NavLink>
+              <Nav.Item>
+                  <NavLink className="navMenuLink" exact to="/">
+                    <h6>Iniciar sesión</h6>
+                  </NavLink>
               </Nav.Item>
+
               <Nav.Item>
                 <NavLink className="navMenuLink" exact to="/MakeOrders">
                   <h6>Tomar orden</h6>
                 </NavLink>
               </Nav.Item>
+
               <Nav.Item>
                 <NavLink className="navMenuLink" to="/ShowOrders">
                   <h6>Ver pedidos</h6>
+                </NavLink>
+              </Nav.Item>
+
+              <Nav.Item>
+                <NavLink className="navMenuLink" to="/EmployeeContainer">
+                  <h6>Administracion</h6>
                 </NavLink>
               </Nav.Item>
 
