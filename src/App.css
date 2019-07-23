@@ -72,6 +72,11 @@ nav {
   border: solid .2rem red;
 }
 
+.cardOrder {
+  width: 18rem;
+  margin: 1rem;
+}
+
 /* MEDIA QUERIES */
 /* Extra small devices (phones, 320px and down) */
 /* @media only screen and (max-width: 375px) and (min-width: 321px) {} */

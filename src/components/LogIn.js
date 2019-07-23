@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const Login = (props) => (
     <div className="mainContent">
@@ -20,8 +21,9 @@ const Login = (props) => (
                 <br/>
                 <input className="form-control" type="password" name="contraseña" id="contraseña" required />
                 <br /><br />
-                <input className="btn" type="submit" value="Enviar" />
+                <input className="btn btn-primary btn-lg" type="submit" value="Enviar" />
             </form>
+            <Link to="./Register">¿Aún no tienes cuenta? REGÍSTRATE AQUÍ</Link>
             </div>
             </div>
         </div>
