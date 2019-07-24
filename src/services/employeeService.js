@@ -1,85 +1,81 @@
 const URL = 'http://localhost:8080/api/v1'
 
-const myHeaders = {
-  method: 'GET',
-  headers:{'Content-Type': 'application/json'}
-} 
+const headers = new Headers();
+headers.append('Content-Type', 'application/json');
 
-export const getAll = () => {
-  fetch(URL+'/employees', myHeaders)
+const getAll = () => (
+  fetch(URL+'/employees', {
+    method: 'GET',
+    headers
+  })
   .then(response => response.json())
-  .then(data => { 
-    //console.log(data)
+  .then(data => {
+    console.log('Success fetch GET all Data Method for RESTFull:', data)
+    return data
+  })
+  .catch(error => console.error('Error:', error))
+);
+
+const addOne = (newEmp) => {
+  fetch(URL+'/employees', {
+    method: 'POST',
+    headers,
+    body : JSON.stringify(newEmp)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success fetch POST Method for RESTFull:', data) 
     return data 
-  })
-  .catch(error => console.error('Error:', error));
+   })
+  .catch(error => console.error('Error:', error))
 };
 
-// fetch('https://reqres.in/api/users?page=1')
-// .then(response => response.json())
-// .then(json => {
-//     this.setState({
-//         allResponse : json, 
-//         users : json.data});
-//     //console.log(this.state.allResponse);
-// })
-// .catch(error => console.log(error))
+const getByID = (idEmp) => (
+  fetch(URL+'/employees/'+idEmp, {
+    method: 'GET',
+    headers
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success fetch GET by ID Method for RESTFull:', data)
+    return data
+  })
+  .catch(error => console.error('Error:', error))
+);
 
-export const addOne = (newEmp) => {
-  myHeaders.method = 'POST'; 
-  myHeaders.body = JSON.stringify(newEmp); 
-
-  fetch(URL+'/employees', myHeaders)
-  .then(res => res.json())
-  .then(response => console.log('Success:', response))
+const updateOne = (idEmp, emp) => {
+  fetch(URL+'/employees/'+idEmp, {
+    method: 'PUT',
+    headers,
+    body : JSON.stringify(emp)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success fetch PUT Method for RESTFull::', data)
+    return data
+  })
   .catch(error => console.error('Error:', error));
 }
 
-export const getByID = (idEmp) => {
-  fetch(URL+'/employees/'+idEmp, myHeaders)
-  .then(function (response) {
-    return response.json();
+const deleteOne = (idEmp) => {
+  fetch(URL+'/employees/'+idEmp,  {
+    method: 'DELETE',
+    headers
   })
-  .then(function (myJson) {
-     //console.log(myJson);
-     return myJson;
-  })
-  .catch(error => console.error('Error:', error));
-};
-
-export const updateOne = (idEmp, emp) => {
-  myHeaders.method = 'PUT'; 
-  myHeaders.body = JSON.stringify(emp); 
-
-  fetch(URL+'/employees/'+idEmp, myHeaders)
-  .then(res => res.json())
-  .then(response => console.log('Success:', response))
-  .catch(error => console.error('Error:', error));
-}
-
-export const deleteOne = (idEmp) => {
-  myHeaders.method = 'DELETE'; 
-
-  fetch(URL+'/employees/'+idEmp, myHeaders)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (myJson) {
-    //console.log(myJson);
-    return myJson;
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success fetch DELETE Method for RESTFull:', data)
+    return data
   })
   .catch(error => console.error('Error:', error));
 };
 
-export const EmployeeServiceREST = () => ({
+export const employeeService = {
   getAll,
   getByID,
   addOne,
   updateOne,
   deleteOne
-});
-
-export const employeeService = EmployeeServiceREST();
-
+}
 
 // sericios puede compartir datos entre capas y componentes

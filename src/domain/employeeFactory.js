@@ -19,15 +19,6 @@ export const createEmployee = (value) => {
   }
 }
 
-export const getAllEmployees = () =>{
-  return  employeeService.getAll() 
-  //console.log(employeeService.getAll().data)
-}
-
-export const EmployeeLogic = () => ({
+export const employeeFactory = {
   createEmployee,
-  getAllEmployees,
-});
-
-
-export const employeeFactory = EmployeeLogic();
+};
