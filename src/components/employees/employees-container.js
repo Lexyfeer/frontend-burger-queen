@@ -1,33 +1,25 @@
 import React, { Component, Fragment } from 'react';
 import TableEmployees from './employees-component';
-import { employeeFactory } from '../../domain/employeeFactory'
+//import { employeeFactory } from '../../domain/employeeFactory'
+import { employeeService } from '../../services/employeeService'
 
-// const URL = 'http://localhost:8080/api/v1'
-
-// const myHeaders = {
-//   method: 'GET',
-//   headers:{'Content-Type': 'application/json'}
-// } 
 
 class EmployeeContainer extends Component {
-    constructor(props, state) {
-        super(props, state);
+    constructor(props) {
+        super(props);
         this.state = {
             allEmployees: [],
             title: 'Administración de todos los empleados:'
         };
     }
-    
+   
     componentDidMount() {
-        // fetch(URL+'/employees', myHeaders)
-        // .then(response => response.json())
-        // .then(data => { 
-        //     this.setState({ allEmployees: data})
-        // })
-        // .catch(error => console.error('Error:', error));
-        
-        //employeeFactory.getAllEmployees();
-        console.log(employeeFactory.getAllEmployees())
+        employeeService.getAll().then( 
+            json => {
+                this.setState({ allEmployees : json })
+                console.log('componentDidMount():', this.state.allEmployees )
+            }
+        ) 
     }
 
     _renderAllUsers(){
@@ -42,6 +34,7 @@ class EmployeeContainer extends Component {
     }
 
     render(){
+        console.log('render():', this.state.allEmployees)
         return(
             <Fragment>
                 <TableEmployees
@@ -55,22 +48,3 @@ class EmployeeContainer extends Component {
     }
 }
 export default EmployeeContainer;
-
-// allEmployees: [
-//     {
-//         Email: "ing.kenai@gmail.com",
-//         Name: "CLAUDIA G VILLANUEVA GALLEGOS",
-//         Pass: "123",
-//         TypeEmployee: "Cocinero",
-//         __v: 0,
-//         _id: "5d363058c5427916d54507ad"
-//     },
-//     {
-//         Email: "lexyfeer@hotmail.com",
-//         Name: "12",
-//         Pass: "12",
-//         TypeEmployee: "Mesero",
-//         __v: 0,
-//         _id: "5d36364ac5427916d54507ae"
-//     }
-// ],

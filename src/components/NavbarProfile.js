@@ -1,8 +1,13 @@
 import React, { Component, Fragment } from "react";
 import Logo from '../assets/images/logo.png';
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, Route, Switch } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 
+import Login from '../components/Login'
+import ShowOrders from '../components/ShowOrders';
+import MakeOrders from '../components/MakeOrders';
+import EmployeeContainer from '../components/employees/employees-container';
+import RegisterContainer from '../components/employees/register-container';
 
 
 export default class NavbarProfile extends Component {
@@ -43,6 +48,12 @@ export default class NavbarProfile extends Component {
               </Nav.Item>
 
               <Nav.Item>
+                <NavLink className="navMenuLink" to="/RegisterContainer">
+                  <h6>Registro</h6>
+                </NavLink>
+              </Nav.Item>
+
+              <Nav.Item>
                 <NavLink className="navMenuLink" to="/LogOut">
                   <h6>Cerrar sesión</h6>
                 </NavLink>
@@ -50,6 +61,15 @@ export default class NavbarProfile extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/ShowOrders" component={ShowOrders} />
+          <Route path="/MakeOrders" component={MakeOrders} />
+          <Route path="/EmployeeContainer" component={EmployeeContainer} />
+          <Route path="/RegisterContainer" component={RegisterContainer} />
+        </Switch>
+
       </Fragment>
     );
   }
