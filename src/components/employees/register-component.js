@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
-const Register = (props) => (
+const RegisterUpdater = (props) => (
     <div className="mainContent">
         <div className="container">
             <h3>{props.defaultData.title}</h3>
@@ -75,7 +76,8 @@ const Register = (props) => (
                     })}
                     </select>
                 </div>
-                <input className="btn" type="submit" value="Enviar"/>
+                <input className="btn" type="submit" value="Enviar" to="/EmployeeContainer"/>
+                {/* <Link to="/EmployeeContainer" className="btn" type="submit"> Enviar </Link> */}
                 <button className="btn btn-link float-left"
                         onClick={props.clearForm}>Limpiar Forma</button>
             </div>
@@ -84,4 +86,4 @@ const Register = (props) => (
     </div>
 ); 
 
-export default Register;
+export default RegisterUpdater;

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import RegisterUpdater from './register-component';
 import { employeeFactory } from '../../domain/employeeFactory'
 
-class RegisterContainer extends Component {
+class UpdateContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,8 +17,20 @@ class RegisterContainer extends Component {
             
             optionsCombo: ['Mesero', 'Cocinero'],
             titleCombo: 'Selecciona puesto',
-            title: 'Registrar Usuario'
+            title: 'Actualizar Usuario'
         };
+    }
+
+    componentDidMount(){
+        //console.log(this.props.location.userData);
+        this.setState({
+            name: this.props.location.userData.Name,
+            email: this.props.location.userData.Email,
+            emailcopy: this.props.location.userData.Email,
+            pass: this.props.location.userData.Pass,
+            passcopy: this.props.location.userData.Pass,
+            typeEmployee: this.props.location.userData.TypeEmployee,
+        })
     }
 
     handleFullNameChange = (e) =>{
@@ -55,6 +67,8 @@ class RegisterContainer extends Component {
             passcopy: '',
             typeEmployee: '',
         });
+
+       
     }
 
     handleFormSubmit = (e) =>{
@@ -68,7 +82,8 @@ class RegisterContainer extends Component {
           passcopy: this.state.passcopy,
           typeEmployee: this.state.typeEmployee,
         };
-        employeeFactory.createEmployee(allDataInputs);
+        console.log(allDataInputs)
+        employeeFactory.updateEmployee(this.props.location.userData._id, allDataInputs)
         this.handleClearForm(e);
     }
 
@@ -98,4 +113,4 @@ class RegisterContainer extends Component {
 //     controlFuncName: React.PropTypes.func.isRequired
 // };
           
-export default RegisterContainer;
+export default UpdateContainer;
